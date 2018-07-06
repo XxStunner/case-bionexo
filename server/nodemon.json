@@ -1,5 +1,6 @@
 {
     "env" : {
-        "MONGO_ALTAS_PW" : "Mj9AKvIHuxAgfz6d"
+        "MONGO_ATLAS_USER" : "case_user",
+        "MONGO_ATLAS_PW" : "I6K8Zuf3z2m3AduY"
     }
 }   
