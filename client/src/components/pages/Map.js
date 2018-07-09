@@ -4,9 +4,6 @@ import axios from 'axios';
 import DefaultHeader from "../headers/default";
 import MapContainer from "../containers/map";
 
-const api_key = 'AIzaSyAPmst-51Ddi0yH_21sASPQw4DZLygSA0A';
-const api_url = 'http://localhost:3000/api/v1';
-
 class Map extends Component {
 
   constructor(props){
@@ -31,8 +28,20 @@ class Map extends Component {
     this.searchGoogle();
   };
 
+  _renderPhone = (phone) => {
+    let i = 0, v = phone.toString();
+    switch(v.length){
+      case 10:
+        return '0## ####-####'.replace(/#/g, _ => v[i++]);
+      case 8:
+        return '####-####'.replace(/#/g, _ => v[i++]);
+      default:
+        return v;
+    }
+  }
+
   searchGoogle(){
-    axios.get(`https://maps.googleapis.com/maps/api/geocode/json?key=${api_key}&address=${this.state.address}&language=pt-br&region=BR`)
+    axios.get(`https://maps.googleapis.com/maps/api/geocode/json?key=${process.env.REACT_APP_GOOGLE_MAPS_API}&address=${this.state.address}&language=pt-br&region=BR`)
     .then(res => {
       this.setState({loc:res.data.results[0].geometry.location, updateMap: true});
       this.searchBionexo();
@@ -40,7 +49,7 @@ class Map extends Component {
   }
 
   searchBionexo(){
-    axios.get(`${api_url}/institutes/by_distance?query=${this.state.loc.lat},${this.state.loc.lng}`)
+    axios.get(`${process.env.REACT_APP_API_URL}/institutes/by_distance?query=${this.state.loc.lat},${this.state.loc.lng}`)
     .then(res => {
       this.setState({intitutes:res.data, updateMap: true});
     }).catch(err => console.log(err));
@@ -53,12 +62,11 @@ class Map extends Component {
           className="map-w"
           coords={this.state.loc} 
           institutes={this.state.intitutes}
-          updateMap={this.state.updateMap} 
         />
         <DefaultHeader/>
           <Grid fluid>
             <Row >
-              <Col xs={6} md={4} lg={3}>
+              <Col className="pr-5" xs={6} md={4} lg={3}>
                 <div className="search-w">
                   <form onSubmit={this.handleSubmit}>
                     <InputGroup>
@@ -84,7 +92,7 @@ class Map extends Component {
                       </div>
                       <div className="institute-f">
                         <p><b>Telefone</b></p>
-                        <p>{institute.phone}</p>
+                        <p>{this._renderPhone(institute.phone)}</p>
                       </div>
                     </div>
                   </li>

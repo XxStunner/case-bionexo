@@ -25,21 +25,132 @@
         }
     }
 
-    @mixin default_padding{
+    @mixin s_d_padding{
         padding: 1.25rem 2.5rem;
     }
-      
 
+    @mixin h_d_padding {
+        padding: 0 2.5rem;
+    }
+    
+    @mixin left_border {
+        border-left: 1px solid #ffffff4d;
+    }
+    
     .header-bg{
         background-color: $bn-blue !important;
+        padding: 0.5rem;
         border: 0 !important;
         border-radius: 0 !important;
+    }
+
+    .bionexo-logo{
+        height: 50px;
+        padding: 15px 15px;
+    }
+
+    .header-l-w{
+        display: flex;
+        color: $bn-white;
+        
+        .menu-collapse{
+            position: relative;
+            height: 50px;
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: center;
+    
+            p{
+                font-size: 1.1rem;
+                font-weight: 200;
+                margin: 0;
+            }
+
+            img{
+                height: 32px;
+            }
+
+            @include h_d_padding();
+        }
+    
+        .header-search{
+            position: relative;
+            height: 50px;
+            width: 100%;
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: center;
+    
+            img{
+                height: 24px;
+                width: 24px;
+            }
+
+            a{
+                display: flex;
+            }
+
+            @include left_border();
+            @include h_d_padding();
+        }
+
+        a{
+            text-align: center;
+            color: inherit;
+            cursor: pointer;
+
+            &:hover, &:active{
+                color: inherit;
+                text-decoration: none !important;
+            }
+        }
+    }
+
+    .header-r-w{
+        display: flex;
+        color: $bn-white;
+
+        p{
+            margin: 0;
+        }
+
+        .user-info{
+            height: 50px;
+            width: 100%;
+            font-size: 1.45rem;
+            padding-top: 0.5rem !important;
+            display: inline-flex;
+            flex-direction: row;
+            justify-content: flex-end;
+
+            @include h_d_padding();
+        }
+
+        .user-avatar{
+            height: 50px;
+            display: inline-flex;
+            justify-content: flex-end;
+            
+            .user-a-w{
+                padding: 0rem 0.5rem;
+                margin: 1rem 0;
+                border-radius: 50%;
+                display: flex;
+                background: white;
+                
+                img{
+                    align-self: center;
+                }
+            }
+            
+            @include h_d_padding();
+            @include left_border();
+        }
     }
 
     .map-w{
         height: 100vh;
     }
-    
 
     .search-w{
         background-color: $bn-darkblue;
@@ -72,7 +183,7 @@
             font-size: 1.5rem;
         }
 
-        @include default_padding();
+        @include s_d_padding();
     }
 
     .search-r{
@@ -103,18 +214,45 @@
                 margin: 1.5rem 0;
             }
 
-            @include default_padding();
+            @include s_d_padding();
         }
     }
 
     .infoBox{
         min-width: 250px;
-        background: white none repeat scroll 0% 0%;
-        border-radius: 0.75rem;
-        border: 0.25rem solid $bn-blue;
-        padding: 0.75rem 1.25rem;
-        transform: translate(-50%, -190%) !important;
-        overflow: hidden !important;
+        overflow: inherit !important;
+        transform: translate(-50%, -220%) !important;
+        
+        .map-infobox{
+            background: white none repeat scroll 0% 0%;
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.75rem;
+            border: 0.25rem solid $bn-blue;
+
+            &:before{
+                content: "";
+                position: absolute;
+                height: 0;
+                width: 0;
+                left: 45%;
+                bottom: -10px;
+                border-top: 10px solid $bn-blue;
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+            }
+
+            &:after{
+                content: "";
+                position: absolute;
+                height: 0;
+                width: 0;
+                left: 45%;
+                bottom: -7px;
+                border-top: 10px solid $bn-white;
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+            }
+        }
 
         h5{
             margin: 0 0 .75rem 0;
@@ -125,33 +263,14 @@
         p{
             margin: 0;
         }
-
-        &:before{
-            content: "";
-            width: 0px;
-            height: 0px;
-            position: absolute;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-top: 10px solid #00bfb6;
-            border-bottom: 10px solid transparent;
-            right: 50%;
-            bottom: -23px;
-        }
-
-        &:after{
-            content: "";
-            width: 0px;
-            height: 0px;
-            position: absolute;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-top: 10px solid #fff;
-            border-bottom: 10px solid transparent;
-            right: 50%;
-            bottom: -18px;
-        }
     }
 
+    .bn-darkblue{
+        color: $bn-darkblue;
+    }
+
+    .pr-5{
+        padding-right: 5rem !important;
+    }
 
 }
