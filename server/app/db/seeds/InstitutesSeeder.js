@@ -1,3 +1,10 @@
+/**
+ * Loads .env
+ */
+require('dotenv').config();
+/**
+ * Plugins
+ */
 const mongoose = require('mongoose');
 const fs = require('fs');
 const csv = require('csv-parse');
@@ -6,7 +13,7 @@ const seed_utils = require('../../utils/seed_utils');
 /**
  * DB connection
  */
-mongoose.connect(`mongodb://case_user:I6K8Zuf3z2m3AduY@cluster0-shard-00-00-fkk6w.mongodb.net:27017,cluster0-shard-00-01-fkk6w.mongodb.net:27017,cluster0-shard-00-02-fkk6w.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`);
+mongoose.connect(`mongodb:///${process.env.MONGO_ATLAS_USER}:${process.env.MONGO_ATLAS_PW}@cluster0-shard-00-00-fkk6w.mongodb.net:27017,cluster0-shard-00-01-fkk6w.mongodb.net:27017,cluster0-shard-00-02-fkk6w.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`);
 /**
  * Reads the CSV and save them to the database
  */

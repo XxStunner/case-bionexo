@@ -11,7 +11,7 @@
 * MongoDB
 * Node.JS
 
-## Instalação
+## Instalação:
 
 É necessário ter Node v8 e npm instalado em seu computador.
 
@@ -59,7 +59,7 @@ Depois de tudo instalado, é só rodar:
 $ npm start
 ```
 
-## Testing
+## Testing:
 
 Para testar ambos ambientes (Front-End ou Back-End), basta estar na pasta raiz dele e rodar:
 
