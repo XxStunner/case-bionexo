@@ -18,7 +18,7 @@ router.get('/by_distance', (req, res, next) => {
     Institute.find({
         loc: {
             $nearSphere: coordinates.reverse(), 
-            $maxDistance: 0.001
+            $maxDistance: 0.0006
         }
     })
     .exec()
