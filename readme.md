@@ -59,13 +59,19 @@ Depois de tudo instalado, é só rodar:
 $ npm start
 ```
 
-##Testing
+## Testing
 
 Para testar ambos ambientes (Front-End ou Back-End), basta estar na pasta raiz dele e rodar:
 
 ```sh
 $ npm test
 ```
+
+## Screenshots:
+
+![](images/01.jpg)
+![](images/02.jpg)
+![](images/03.jpg)
 
 ## Observações:
 
