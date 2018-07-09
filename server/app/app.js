@@ -1,3 +1,10 @@
+/**
+ * Loads .env
+ */
+require('dotenv').config();
+/**
+ * Plugins
+ */
 const express = require('express');
 const app = express();
 const morgan = require('morgan');

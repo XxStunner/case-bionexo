@@ -2,16 +2,20 @@ const express = require('express');
 const router = express.Router();
 const Institute = require('../../db/models/Institute');
 
-router.get('/', (req, res, next) => {
-    Institute.find()
-    .exec()
-    .then(doc => {
-        res.status(200).json(doc);
-    }).catch(err => res.status(500).json(err));
-});
+/**
+ * Get all institutes in database
+ */
+// router.get('/', (req, res, next) => {
+//     Institute.find()
+//     .exec()
+//     .then(doc => {
+//         res.status(200).json(doc);
+//     }).catch(err => res.status(500).json(err));
+// });
 
 /**
  * Get all institutes by a distance
+ * @param {string} query - Receive the coords [lat, lng].
  */
 router.get('/by_distance', (req, res, next) => {
     let coordinates = req.query.query.split(",");
@@ -38,10 +42,13 @@ router.get('/by_distance', (req, res, next) => {
     }).catch(err => res.status(500).json(err));
 });
 
-router.get('/drop', (req, res, next) => {
-    Institute.remove({}, (err) => { 
-        res.status(200).json("Sucesso!");
-     });
-});
+/**
+ * Drop the table
+ */
+// router.get('/drop', (req, res, next) => {
+//     Institute.remove({}, (err) => { 
+//         res.status(200).json("Sucesso!");
+//      });
+// });
 
 module.exports = router;

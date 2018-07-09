@@ -18,7 +18,7 @@ fs.readFile('app/files/csv/ubs.csv', (err, fileData) => {
                 address: r.dsc_endereco,
                 city: r.dsc_cidade,
                 neighborhood: r.dsc_bairro,
-                phone: r.dsc_telefone,
+                phone: r.dsc_telefone.replace(/[^\w\s]/gi, ''),
                 loc: {
                     type: "Point",
                     coordinates: [r.vlr_longitude, r.vlr_latitude]
@@ -35,6 +35,7 @@ fs.readFile('app/files/csv/ubs.csv', (err, fileData) => {
         ))).then(() => {
             console.log("Dados inseridos com sucesso!");
             mongoose.disconnect();
+            process.exit();
         }).catch(err => console.log(err));
     });
 });
