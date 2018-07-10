@@ -51,7 +51,7 @@ class Map extends Component {
   searchBionexo(){
     axios.get(`${process.env.REACT_APP_API_URL}/institutes/by_distance?query=${this.state.loc.lat},${this.state.loc.lng}`)
     .then(res => {
-      this.setState({intitutes:res.data, updateMap: true});
+      this.setState({intitutes:res.data.entries, updateMap: true});
     }).catch(err => console.log(err));
   }
 

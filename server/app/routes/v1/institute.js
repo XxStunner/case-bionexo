@@ -27,7 +27,7 @@ router.get('/by_distance', (req, res, next) => {
     })
     .exec()
     .then(docs => {
-        res.status(200).json(docs.map(doc => ({
+        res.status(200).json(docs.map(doc => ({entries: {
             id: doc._id,
             name: doc.name,
             address: doc.address,
@@ -38,7 +38,7 @@ router.get('/by_distance', (req, res, next) => {
                 long: doc.loc.coordinates[0],
             },
             scores: doc.scores
-        })));
+        }})));
     }).catch(err => res.status(500).json(err));
 });
 
